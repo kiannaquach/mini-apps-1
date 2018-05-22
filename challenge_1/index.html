@@ -5,58 +5,68 @@
 	<link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
 	<title>Tic-Tac-Toe</title>
 	<style>
+		body {
+			background-color: #55efc4;
+		}
 		div {
 		    width: 300px;
 		    height: 600px;
+		    margin: auto;
 		    text-align: center;
 		}
 
-		div div {
+		.main .box {
 		    width: 100px;
 		    height: 100px;
 		    font-family: 'Libre Franklin', sans-serif;
+		    background-color: white;
+		    font-size: 53px;
+		    padding: center;
 		    text-align: center;
+		    margin:auto;
 		    outline: 1px solid;
 		    float: left;
 		}
 		h1 {
 			font-family: 'Libre Franklin', sans-serif;
-		    text-align: left;	
+		    text-align: center;
+		    margin: auto;	
+		}
+		.button {
+			height:auto;
+			margin: auto;
+			border-radius:10px;
+		}
+		#player1 {
+			height:auto;
+			margin: auto;
+		}
+		#player2 {
+			height:auto;
+			margin: auto;
 		}
 	</style>
 </head>
 <body>
 	<h1>Tic-Tac-Toe</h1>
-	<button onClick="reload()">Refresh Game</button>
-	<br>
-	<div>
-	    <div id="box-0-0" onClick="clickedBox(0,0)">box 0-0</div>
-	    <div id="box-0-1" onClick="clickedBox(0,1)">box 0-1</div>
-	    <div id="box-0-2" onClick="clickedBox(0,2)">box 0-2</div>
-	    <div id="box-1-0" onClick="clickedBox(1,0)">box 1-0</div>
-	    <div id="box-1-1" onClick="clickedBox(1,1)">box 1-1</div>
-	    <div id="box-1-2" onClick="clickedBox(1,2)">box 1-2</div>
-	    <div id="box-2-0" onClick="clickedBox(2,0)">box 2-0</div>
-	    <div id="box-2-1" onClick="clickedBox(2,1)">box 2-1</div>
-	    <div id="box-2-2" onClick="clickedBox(2,2)">box 2-2</div>
+	<div class='button'>
+		<button onClick="reload()">Refresh Game</button>
+		<button onClick="newGame()">New Game</button>
 	</div>
-<!-- 	<table>
-	    <tr>
-	        <td></td>
-	        <td></td>
-	        <td></td>
-	    </tr>
-	    <tr>
-	        <td></td>
-	        <td></td>
-	        <td></td>
-	    </tr>
-	    <tr>
-	        <td></td>
-	        <td></td>
-	        <td></td>
-	    </tr>
-	</table> -->
+	<br>
+	<div id="player1"></div>
+	<div id="player2"></div>
+	<div class="main">
+	    <div class="box" id="box-0-0" onClick="clickedBox(0,0)"></div>
+	    <div class="box" id="box-0-1" onClick="clickedBox(0,1)"></div>
+	    <div class="box" id="box-0-2" onClick="clickedBox(0,2)"></div>
+	    <div class="box" id="box-1-0" onClick="clickedBox(1,0)"></div>
+	    <div class="box" id="box-1-1" onClick="clickedBox(1,1)"></div>
+	    <div class="box" id="box-1-2" onClick="clickedBox(1,2)"></div>
+	    <div class="box" id="box-2-0" onClick="clickedBox(2,0)"></div>
+	    <div class="box" id="box-2-1" onClick="clickedBox(2,1)"></div>
+	    <div class="box" id="box-2-2" onClick="clickedBox(2,2)"></div>
+	</div>
 	<script src="app.js"></script>
 
 </body>

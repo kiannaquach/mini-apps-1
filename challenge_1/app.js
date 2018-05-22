@@ -1,21 +1,28 @@
 console.log('hello')
 
-// document.getElementById('box').addEventListener('click', function() {
-// 	document.getElementById('box').innerHTML = 'X'
-// })
-
 var grid = [[],[],[]]
 var currentPlayer = prompt('Do you want to be X or O?')
 // console.log(currentPlayer);
+var scoreX = 0;
+var scoreO = 0;
 var pos;
 
 // X = 1
 // O = 2
+	
 
-console.log(grid)
-
+// console.log(grid)
 var reload = function() {
 	window.location.reload();
+}
+
+var scoreBoard = function() {
+
+
+}
+
+var newGame = function() {
+	scoreBoard();
 }
 
 var displayGrid = function() {
@@ -53,6 +60,12 @@ var clickedBox = function(i, j) {
 	checkColumns(j);
 	checkMajorDiagonals();
 	checkMinorDiagonals();
+	
+	var inner = document.getElementById('player1');
+	inner.innerHTML = 'Player X: ' + scoreX;
+
+	var outer = document.getElementById('player2');
+	outer.innerHTML = 'Player O: ' + scoreO;
 }
 
 var checkRows = function(rowIndex) {
@@ -69,10 +82,12 @@ var checkRows = function(rowIndex) {
 		}
 
 		if (countX === 3) {
+			scoreX++
 			return alert('X you won rows!')
 		} else if (countO === 3) {
+			scoreO++
 			return alert('O you won rows!')
-		}
+		} 
 	}
 }
 
@@ -92,8 +107,10 @@ var checkColumns = function(columnIndex) {
 		}
 
 		if (countX === 3) {
+			scoreX++
 			return alert('X won columns!')
 		} else if (countO === 3) {
+			scoreO++
 			return alert('O won columns')
 		}
 	}
@@ -117,10 +134,12 @@ var checkMajorDiagonals = function(columnAtFirstRow) {
 		columnAtFirstRow++
 	}
 	if (countX === 3) {
+		scoreX++
 		return alert('X won MajorDiagonal');
 	} else if (countO === 3) {
+		scoreO++
 		return alert('O won MajorDiagonal');
-	}
+	} 
 }
 
 var checkMinorDiagonals = function(minorDiagonalIndex) {
@@ -141,8 +160,10 @@ var checkMinorDiagonals = function(minorDiagonalIndex) {
 	}
 
 	if (countX === 3) {
+		scoreX++
 		return alert('X won MinorDiagonal');
 	} else if (countO === 3) {
+		scoreO++
 		return alert('O won MinorDiagonal');
-	}
+	} 
 }
