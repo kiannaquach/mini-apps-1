@@ -10,19 +10,20 @@ var pos;
 // X = 1
 // O = 2
 	
-
-// console.log(grid)
 var reload = function() {
 	window.location.reload();
 }
 
-var scoreBoard = function() {
-
-
+var resetBoard = function() {
+	for (var i = 0; i < grid.length; i++) {
+		for (var j = 0; j < grid.length; j++) {
+			grid[i][j] = 0;
+		}
+	} 
 }
 
 var newGame = function() {
-	scoreBoard();
+	resetBoard();
 }
 
 var displayGrid = function() {
@@ -38,8 +39,6 @@ displayGrid();
 
 var clickedBox = function(i, j) {
 	var pos = grid[i][j];
-	if (document.getElementById(`box-${i}-${j}`) === null) {	
-	}
 
 	if (grid[i][j] > 0) {
 		alert('Please click another box')
