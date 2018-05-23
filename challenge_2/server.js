@@ -4,37 +4,50 @@ var app = express();
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}));
 
-app.get('/csv', (req, res) => 
-	console.log('this is responseeee: ', res)
-)
+// app.get('/csv', (req, res) => {
+// 	app.send(convertToCSV(req.body));
+// });
 
 function convertToCSV(obj) {
+	// loop through obj check to see if there's children
+		// want to keep adding obj[key] val into an array
+	// if there's children 
+		// perform recursion
 	var keys = Object.keys(obj);
 	var line = '';
 
 	var firstLine = keys.slice(0, keys.length-1).join(',') + '\n';
-	var parsedObj = JSON.parse(obj);
-
 	
-	// // for (var i = 0; i < obj.length; i++) {
-	// // 	for (key in obj[i]) {
+	 var recurse = (obj) => {
+	 	line += getDataEachObj(obj);
 
-	// // 	}
-	// // }
-	// var result = [];
-	// var eachLine = '';
+	 	obj.children.forEach(child => {
+	 		recurse(child);
+	 	});
+	 }
 
-	// for (var key in obj) {
-	// 	if (key !== 'children') {
-	// 		line = result.push(obj[key]).join(',') + '/n';
-	// 	}
-	// }
+	 recurse(obj);
+
+	 return firstLine + line;
 }
+
+function getDataEachObj(obj) {
+	var result = [];
+
+	for (var key in obj) {
+		if (key !== 'children') {
+			result.push(obj[key]);
+		}
+	}
+
+	return result.join(',') + '\n';
+}
+
 
 app.post('/csv', (req, res) => {
 	// console.log('typeof---', typeof JSON.stringify(req.body));
-	console.log('this is response: ', req.body)
-	// convertToCSV(req.body);
+	// console.log('this is response: ', req.body);
+	res.send(convertToCSV(req.body));
 	// res.sendStatus(201)
 });
 
